@@ -146,4 +146,25 @@ WHERE [TransactionID] IN ( 2 , 8);
 
 COMMIT;
 
+-- PHASE3 - Rapport 1 - Les Agences les plus rentables 
+SELECT b.[Agency_Name] AS NOM_DES_AGENCES , b.[Region],
+		SUM ( a.[Balance]) AS TotalSoldes
+FROM [dbo].[Branches] AS b
+JOIN [dbo].[Employees] AS e
+ON b.[BranchID] = e.[BranchID]
+JOIN [dbo].[Customers] AS c
+ON e.[EmployeeID] = c.[EmployeeID]
+JOIN [dbo].[Accounts] AS a
+ON c.[CustomerID] = a.[CustomerID]
+GROUP BY b.[Agency_Name], b.[Region]
+ORDER BY TotalSoldes DESC;
+
+-- 2 - Rapport 2 : Segmentation des Clients
+SELECT [FullName], [CreditScore],
+	CASE 
+		WHEN [CreditScore] < 700 THEN 'A SURVEILLER'
+		WHEN [CreditScore] BETWEEN 700 AND 800 THEN 'BON'
+		ELSE 'EXCELLENT'
+	END AS Categorie_score
+FROM [dbo].[Customers];
 
