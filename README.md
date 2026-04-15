@@ -76,7 +76,7 @@ Le script SQL complet (DDL) de création de ces tables. On va s'assurer que lese
   </p>
 <br>
 <b><h3> 1-📋 Diagnostic Expert (Phase 2) </h3></b><br>
-Maintenant que nous avons de la donnée, le Board veut un "Data Quality Report". Nous allons utiliser connaissances (SELECT, JOIN, WHERE) pour sortir les listes suivantes:
+Maintenant que nous avons de la donnée, le Board veut un "Data Quality Report". Cette partie est juste une découverte des données . Savoir quel sont les valeurs des colonnes qu'on peut nettoyer pour rendre les fichiers exploitables .Nous allons utiliser les connaissances (SELECT, JOIN, WHERE) pour sortir les listes suivantes:
 <br>
 Le test de la casse (Case Sensitivity) : Trouvez tous les clients dont le FullName comporte des minuscules 
   <p align='center'>
