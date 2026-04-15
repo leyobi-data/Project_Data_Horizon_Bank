@@ -81,21 +81,21 @@ Maintenant que nous avons de la donnée, le Board veut un "Data Quality Report".
 Le test de la casse (Case Sensitivity) : Trouvez tous les clients dont le FullName comporte des minuscules <br>
   <p align='center'>
     <img src="Erreur_Noms_Minuscule.png" alt="CAPTURE DES ERREURS SUR LES NOMS" Width="700>
-      </p>
-<br>
-Le test des doublons : Identification des noms de clients qui apparaissent plus d'une fois dans la table (même s'ils ont un CustomerID différent).
-      <p align='center'>
-        <img src="Apparition_client.png" alt="CAPTURE des clients qui apparaissent plusieurs fois" width="700">
   </p>
 <br>
+Le test des doublons : Identification des noms de clients qui apparaissent plus d'une fois dans la table (même s'ils ont un CustomerID différent).<br>
+      <p align='center'>
+        <img src="Apparition_client.png" width="600">
+      </p>
+<br>
 Le test de cohérence géographique :
-Affichez les clients dont le pays n'est pas écrit avec la première lettre en Majuscule seulement (ex: 'france').
+Affichez les clients dont le pays n'est pas écrit avec la première lettre en Majuscule seulement (ex: 'france').<br>
   <p align='center'>
       <img scr="erreur_nom_ville.png" alt="CAPTURE DES ERREURS SUR LE NOM DES VILLES" width="600">
   </p>
 <br>
 Le test de rentabilité (Accounts) :
-Liste les comptes qui ont un solde (Balance) négatif.
+Liste les comptes qui ont un solde (Balance) négatif.<br>
   <p align='center'>
     <img src="solde_negatif.png" alt="CAPTURE DES CLIENT AYANT UN SOLDE NEGATIF" width="600">
   </p>
