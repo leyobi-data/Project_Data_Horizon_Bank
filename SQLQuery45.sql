@@ -111,4 +111,39 @@ JOIN [dbo].[Accounts]  AS a
 ON c.[CustomerID] = a.[CustomerID]
 WHERE [Balance] < 0;
 
+-- 1-Passer tout les noms des client en Majuscule 
+BEGIN TRANSACTION -- cette commande est utiliser pour avoir un revers en cas d'erreur dans la modification 
+
+UPDATE [dbo].[Customers]
+SET [FullName] = UPPER([FullName]);
+--pour valider définitivement on fait un COMMIT; et pour annuler la modif on fait un ROLLBACK; .
+COMMIT;
+
+-- 2 - Mettre la première lettre des pays en Majuscile 
+BEGIN TRANSACTION;
+
+UPDATE [dbo].[Customers]
+SET [Country] = UPPER(LEFT([Country] ,1))+LOWER(SUBSTRING([Country] , 2, 6))
+WHERE [CustomerID] IN (101 , 106);
+
+COMMIT;
+
+-- 3 - Remplacer le valeurs NULL par des valeur utilisable( cas des mails)
+BEGIN TRANSACTION;
+
+UPDATE [dbo].[Customers]
+SET [Email] = 'non-renseigné@horizon.com'
+WHERE [Email] IS NULL;
+
+COMMIT;
+
+-- 4 - Transformer les transaction négatives en valeurs positives
+BEGIN TRANSACTION;
+
+UPDATE [dbo].[Transactions]
+SET [Amount] = ABS([Amount])
+WHERE [TransactionID] IN ( 2 , 8);
+
+COMMIT;
+
 
