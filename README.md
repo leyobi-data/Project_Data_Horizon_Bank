@@ -99,3 +99,27 @@ Liste les comptes qui ont un solde (Balance) négatif.<br>
   <p align='center'>
     <img src="solde_negatif.png" alt="CAPTURE DES CLIENT AYANT UN SOLDE NEGATIF" width="600">
   </p>
+  <br>
+ <b><h3>2 📋 PHASE 2.2 : Le Nettoyage (Data Remediation)</h3></b><br>
+ Dans cete partie on va faire la mise jours des nouvelles modification pour corriger les erreurs de saisies qu'on a constaté plus haut . Cella nous permettre de mieux manipuler les données données lors de nos calculs et de nos transformations .<br>
+ <br>
+ --Normalisation des Noms des clients .On va opter de mettre tout les noms des client en MAJUSCULE.<br>
+ --On constate que certains noms de pays n'ont pas le mème standart que les autre , on va mettre les 2 colonnes dont les la prière lettre des noms des pays sont en MINUSCULE  en MAJUSCULE de la table CLIENT .<br>
+ En faisant un "SELECT" on observe bien le changement <br>
+   <p align='center'>
+     <img src="Update_Name_Country.png" width="600">
+   </p>
+  <br>
+--Pour nos opérations de calculs , filtres et recherches il est important de donner aux valeur "NULL" une valeur utilisable pour que les fonctions puisse exécuter les commandes . Dans ce cas précis aux cellules des mails ayant des valeurs on va leur donner la valeur "non-renseigner@horizon.com" pour indiquer aux employés que ce n'est pas une valeur utilisable . En faisant un 3SELECT" le redu de notre script donne ceci:<br>
+  <p align='center'>
+    <img src="Email.png" width="600">
+  </p>
+  <br>
+-- Les valeurs negatives présentes dans la balance des transaction veulent surement un retrait mais on a déjà une collone qui nous donne le type de transactions il ne sert à rien de garder les (-) car cela peut nous faucher dans nos calculs . L'excution du code et SELECT nous donne cette image:<br>
+  <p align='center'>
+    <img src="Valeur_negative.png" width="600">
+  </p>
+<br>
+
+
+ 
