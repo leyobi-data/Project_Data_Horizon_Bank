@@ -120,6 +120,56 @@ Liste les comptes qui ont un solde (Balance) négatif.<br>
     <img src="Valeur_negative.png" width="600">
   </p>
 <br>
+<b><h2>📊 PHASE 3 : Business Intelligence & Analyse (L'Extraction)</h2></b><br>
+Danc cette partie nous allons procéder à la l'analyse des données à disposition pour mettre en évidence les KPI. Cette partie se fera en 3 RAPPORTS :<br>
+<br>
+<b><h3>Rapport 1 : Performance des Agences</h3></b><br>
+La direction veut savoir la region qui rapporte le plus d'argent . L'objectif de cette partie sera de donner le <b>CHIFFRE D'AFFAIRE (CA)</b> de toutes les Agences de la banque HORIZON_BANK afin d'en deceler les plus rentables .<br>
+La Performance des Agence se calcule en fonction des soldes client appartenant à ces Agences et ainsi la vu de SSMS nous donne le classement de celle ci<br>
+  <p align='center'>
+    <img src="Performance_Agences.png" width="700">
+  </p>
+  <br>
+  ON va tranformer ce tableau en données exploitable a fin de mieux visualiser ces chiffres pour que le BOARD puisse mieux comprendre et pour cela on aura besoin d'un outil de visualisation comme EXCEL . <br>
+Dans sun environement bancaire ou les données changent constament, ON va faire une laison EXCEL --> SQL SERVER pour que celle ci se mettent à jours de façon dynamique pour permettre une visualisation en temps réel.Cette figure montre d'ailleur le chargement <br>
+  <p align='center'>
+    <img src="LiaisonSQL_EXCEL.png" width="600">
+  </p>
+  <br>
+On va juste renommer les champs avec <b>POWER QUERY</b> avant de sles charger sur la feuille calcul <br>
+  <p align='center'>
+    <img src="PowerQuery_rename.png" alt="600">
+  </p>
+  <br>
+ON obtient le tableau croisé dynamique accompagné de son graphique <br>
+  <p align='center'>
+    <img src="TCD_Perf_Region.png" width="600">
+  </p>
+  <br>
+  On peut donc constater que la REGION la plus rentable est <b>British Columbia</b> est de loin .<br>
+<b><h3>Rapport 2 : Segmentation des Clients</h3></b><br>
+Le BOARD veut par le biais de la direction marketing veut catégotiser les clients selon leut "CréditScore" . Pour ce faire , on va afficher les nom des client tels :<br>
+* Si Score > 800 : 'Excellent'
+* Si Score entre 700 et 800 : 'Bon'
+* Si Score < 700 : 'À surveiller'<br>
+Dans cette figure vous avez toutes les catégories de client en fonction des scores credits <br>
+  <p align='center'>
+    <img src="Credit_score.png" width="600">
+  </p>
+  <br>
+  Par le même proceder que le précédent , on a pu ressortir un TCD représentant les catégories de score en fonction du score crédit de chaque client <br>
+    <p align='center'>
+      <img src="graph_categorie.png" width="600">
+    </p>
+    <br>
+  Ce graphique montre la peoportion des client par <b>Categorie de score</b> et ainsi on peut constater que la banque HorizonBank a de bons clients et quelques clients excellents aussi . Il faudre donc accentuer le suivi de 2 clients "<b>A SURVEILLER</b> pour les ramener vers les <b>BON</b>.<br>
+  <br>
+  <b><h3>Rapport 3 : Top Transactions par Client</h3></b><br>
+  La direction Marketing demande les plus grosses transaction de chaque client 
+  
+
+
+
 
 
  
