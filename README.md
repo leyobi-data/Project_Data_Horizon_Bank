@@ -1,5 +1,58 @@
 # HorizonBank_Project
 <b><h2>🏦 Projet : "Horizon Banking Data Integrity & Insights"</h2></b><br>
+<b><h3>📝 Présentation du projet</h3></b><br>
+Ce projet simule le cycle complet de travail d'un Analyste de Données au sein d'une institution financière internationale. L'objectif était de transformer des données bancaires brutes et fragmentées en un outil de pilotage interactif permettant de surveiller la santé financière de la banque et le profil de risque des clients.<br>
+
+<b><h3>🛠️ Stack Technique</h4></b>
+Base de données : SQL Server (MS SQL)<br>
+
+Langages : T-SQL (DDL, DML, DQL)<br>
+
+Visualisation : Microsoft Excel (Tableaux Croisés Dynamiques, Power Pivot, Segments)<br>
+<br>
+<b><h3>⚙️ Étapes de réalisation</h4></b><br>
+<b><h4>1. Architecture & Ingestion (SQL)</h4></b><br>
+Conception d'un schéma relationnel complet comprenant 6 tables interconnectées :<br>
+
+Agences & Employés : Gestion de la structure organisationnelle.<br>
+
+Clients & Comptes : Suivi des profils et des soldes bancaires.<br>
+
+Transactions & Prêts : Analyse des flux monétaires et des engagements financiers.<br>
+
+Compétences : Clés primaires/étrangères, contraintes d'intégrité, types de données monétaires précis.<br>
+<br>
+<b><h4>2. Nettoyage & Standardisation (Data Cleaning)</h4></b><br>
+Traitement des anomalies critiques pour garantir la fiabilité des analyses :<br>
+
+Normalisation des noms et des pays (gestion de la casse et des formats).<br>
+
+Traitement des valeurs nulles (Emails, coordonnées).<br>
+
+Standardisation des flux financiers (Conversion des montants négatifs en valeurs absolues via ABS()).<br>
+
+Compétences : Manipulation de chaînes de caractères, Transactions SQL (COMMIT/ROLLBACK).<br>
+
+<b></h4>3. Analyse & Intelligence d'Affaires</h4></b><br>
+Extraction d'indicateurs clés de performance (KPIs) via des requêtes avancées :<br>
+
+Segmentation Clients : Utilisation de clauses CASE WHEN pour classer les clients selon leur score de crédit.<br>
+
+Top Transactions : Mise en œuvre de CTE (Common Table Expressions) et de fonctions de fenêtrage (RANK) pour isoler les plus gros mouvements par compte.<br>
+
+Performance Régionale : Agrégation des soldes par zone géographique.<br>
+
+<b><h4>4. Visualisation (Dashboard Excel)</h4></b><br>
+Création d'un tableau de bord interactif comprenant :<br>
+
+Indicateurs Flash : Solde total, Score de crédit moyen, Taux de clients à risque.<br>
+
+Analyse de Répartition : Segmentation des scores de crédit via un graphique en anneau (Donut Chart).<br>
+
+Analyse Comparative : Volume des soldes par région et top transactions clients.<br>
+
+Interactivité : Intégration de segments (Slicers) pour un filtrage dynamique par région et par nom.<br>
+<br>
 Phase 1 : Ingestion et Schéma (Le socle)<br>
 Avant d'analyser, il faut construire. On vas devoir créer l'architecture capable de recevoir nos données clients, comptes et transactions.<br>
 <br>
@@ -143,14 +196,15 @@ On va juste renommer les champs avec <b>POWER QUERY</b> avant de sles charger su
   <br>
 ON obtient le tableau croisé dynamique accompagné de son graphique <br>
   <p align='center'>
-    <img src="TCD_Perf_Region.png" width="600">
+    <img src="Solde_T_Region.png" width="600">
   </p>
   <br>
-  On peut donc constater que la REGION la plus rentable est <b>British Columbia</b> est de loin .<br>
+Cette analyse met en lumière une repartition géographique très inégale des fonds. La <b>Colombie-Britanique</b> domine largement le porte feuille avec près de 9,8 Millions $,réprésentant la vaste majorité des actifs. A l'opposé, la region ile-de-france présente un solde négatif , signalant des comptes débiteurs qui pourraient nécessiter une surveillance particulière en matière d'intégrité des données ou de gestion des risques.<br>
+<br>
 <b><h3>Rapport 2 : Segmentation des Clients</h3></b><br>
 Le BOARD veut par le biais de la direction marketing veut catégotiser les clients selon leut "CréditScore" . Pour ce faire , on va afficher les nom des client tels :<br>
-* Si Score > 800 : 'Excellent'
-* Si Score entre 700 et 800 : 'Bon'
+* Si Score > 800 : 'Excellent'<br>
+* Si Score entre 700 et 800 : 'Bon'<br>
 * Si Score < 700 : 'À surveiller'<br>
 Dans cette figure vous avez toutes les catégories de client en fonction des scores credits <br>
   <p align='center'>
@@ -162,10 +216,34 @@ Dans cette figure vous avez toutes les catégories de client en fonction des sco
       <img src="graph_categorie.png" width="600">
     </p>
     <br>
-  Ce graphique montre la peoportion des client par <b>Categorie de score</b> et ainsi on peut constater que la banque HorizonBank a de bons clients et quelques clients excellents aussi . Il faudre donc accentuer le suivi de 2 clients "<b>A SURVEILLER</b> pour les ramener vers les <b>BON</b>.<br>
+Ce graphique présente la segmention des clients par catégorie de score de crédit? On observe que 60% du portefeuille bénéficie d'un score BON , ce qui indique une base de clients majoritairement stable. Tputefois 20% de clients à "surveiller", constituant un segment à risque modéré qui nécessite une attention particulière pour prévenir d'éventuels défauts de paiement.
   <br>
   <b><h3>Rapport 3 : Top Transactions par Client</h3></b><br>
-  La direction Marketing demande les plus grosses transaction de chaque client 
+  La direction Marketing demande les plus grosses transaction de chaque client . Pour ce faire on a utiliser un des concept du code SQL pour arriver à ce rendu . Vu que l'analyse est centré sur le point de vu <b>Client</b> , cette partie sert à indentifier et catégoriser  les "gros mouvements clients" ou les client les clients avec les plus "gros mouvements" 
+    <p align='center'>
+      <img scr="Rang_Transaction.png" width="600">
+    </p>
+    <br>
+Après implémention et tranformation sur l'outil EXCEL on ce graphique qui montre les transactions les plus elevées par client <br>
+  <p align='center'>
+    <img src="Transaction_Client.png" width="600">
+  </p>
+  <br>
+  Ce graphique présente la transaction maximal enregistrée pour chaque client. On observe une forte disparité entre les comptes, avec un <b>50 000</b> pour le client BRUCE WAYNE, tandis que les autres clients présentent des transactions plafonnées à des niveaux nettement inférieurs, suggérant des profils d'utilisateurs differents .
+<br>
+<b><h2> DASHBOARD</h2></b><br>
+  <p align='center'>
+    <img src="Dashbord.png" width="600">
+  </p>
+  <br>
+  
+<b><h3></h3></b>📈 Résultats clés</h3></b><br>
+Fiabilité des données : 100% des doublons et erreurs de saisie ont été corrigés.<br>
+
+Aide à la décision : Identification visuelle immédiate des 20% de clients à risque nécessitant une surveillance accrue.
+
+Optimisation : Réduction du temps de reporting via des requêtes SQL automatisées.
+
   
 
 
