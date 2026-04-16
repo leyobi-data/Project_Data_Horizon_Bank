@@ -1,4 +1,3 @@
-# HorizonBank_Project
 <b><h2>🏦 Projet : "Horizon Banking Data Integrity & Insights"</h2></b><br>
 <b><h3>📝 Présentation du projet</h3></b><br>
 Ce projet simule le cycle complet de travail d'un Analyste de Données au sein d'une institution financière internationale. L'objectif était de transformer des données bancaires brutes et fragmentées en un outil de pilotage interactif permettant de surveiller la santé financière de la banque et le profil de risque des clients.<br>
