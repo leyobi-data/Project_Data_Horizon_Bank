@@ -168,3 +168,21 @@ SELECT [FullName], [CreditScore],
 	END AS Categorie_score
 FROM [dbo].[Customers];
 
+-- 3 - La plus grosse transaction par client
+WITH CustomerTransactionTotal AS (
+	SELECT t.[TransactionID] , 
+			c.[FullName],
+			t.[Amount],
+			RANK() OVER ( PARTITION BY t.[AccountID]  ORDER BY t.[Amount] DESC) AS Classement
+	FROM [dbo].[Transactions] AS t
+	JOIN [dbo].[Accounts] AS a
+	ON t.[AccountID] = a.[AccountID]
+	JOIN [dbo].[Customers] AS c
+	ON a.[CustomerID] = c.[CustomerID]
+	)
+SELECT *
+FROM  CustomerTransactionTotal 
+WHERE Classement = 1;
+
+SELECT AVG([CreditScore]) AS Score_CREDIT_Moyen
+FROM [dbo].[Customers];
